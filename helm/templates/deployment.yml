@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-resolver
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-resolver
+  template:
+    metadata:
+      labels:
+        app: service-resolver
+    spec:
+      serviceAccountName: service-resolver
+      containers:
+        - name: service-resolver
+          image: service-resolver:latest
+          imagePullPolicy: {{ .Values.imagePullPolicy | default "Always" }}
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 8080

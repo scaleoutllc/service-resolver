@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: service-resolver
+subjects:
+  - kind: ServiceAccount
+    name: service-resolver
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: ClusterRole
+  name: service-resolver
+  apiGroup: rbac.authorization.k8s.io

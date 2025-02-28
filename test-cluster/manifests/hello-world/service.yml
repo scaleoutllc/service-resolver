@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: home
+  namespace: hello-world
+spec:
+  selector:
+    app: home
+  ports:
+  - name: http
+    port: 80
