@@ -18,5 +18,5 @@ This service provides the following API endpoints
 Returns the actual pod IP addresses for a given `:service` based on that service's selector configuration. This is useful 
 for many clustered technologies like Cassandra and Kafka and supporting the libraries that connect to them directly via IP
 
-### `/service/:namespace/:service`
+### `v1/service/:namespace/:service`
 Returns the k8s service level IP address for a given `:service`
