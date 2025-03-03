@@ -14,9 +14,9 @@ implementations of architectures relying on AWS Lambda, Google Cloud Run, and Az
 ## API Endpoints
 This service provides the following API endpoints
 
-### `v1/headless/:namespace/:service`
-Returns the actual pod IP addresses for a given `:service` based on that service's selector configuration. This is useful 
-for many clustered technologies like Cassandra and Kafka and supporting the libraries that connect to them directly via IP
-
 ### `v1/service/:namespace/:service`
 Returns the k8s service level IP address for a given `:service`
+
+### `v1/endpoints/:namespace/:service`
+Returns the actual pod IP addresses for a given `:service` based on that service's selector configuration. This is useful
+for many clustered technologies like Cassandra and Kafka and supporting the libraries that connect to them directly via IP

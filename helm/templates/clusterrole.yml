@@ -3,9 +3,12 @@ kind: ClusterRole
 metadata:
   name: service-resolver
 rules:
+  - apiGroups: [ "" ]
+    resources: [ "pods" ]
+    verbs: [ "get", "list", ]
   - apiGroups: [""]
     resources: ["services"]
     verbs: ["list", "get"]
   - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["get", "list",]
+    resources: ["endpoints"]
+    verbs: ["get", "list"]

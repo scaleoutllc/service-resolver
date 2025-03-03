@@ -92,16 +92,13 @@ func main() {
 	e.GET("/readiness", ReadinessHandler)
 	e.GET("/liveness", LivenessHandler)
 
-	// /headless/:namespace/:service returns the actual pod IP addresses for a given :service based on that service's selector configuration
-	// to build the response the handler queries the service object, then uses the service object's selector to list pods where the IPs can be parsed out
-	// by building the response in this way, the :service being queried does not have to be a true 'k8s headless service' where clusterIp is set to None
-	// # see: https://kubernetes.io/docs/concepts/services-networking/service/#headless-services
-	// this is useful for many clustered technologies like cassandra and kafka and supporting the libraries that connect to them
-	e.GET("/v1/headless/:namespace/:service", HeadlessResolver)
-
 	// /service/:namespace/:service returns the service level clusterIp for a given :service
 	// # see: https://kubernetes.io/docs/concepts/services-networking/service/#services-in-kubernetes
 	e.GET("/v1/service/:namespace/:service", ServiceResolver)
+
+	// /endpoints/:namespace/:service returns the direct pod IP addresses for a given :service
+	// this is useful for many clustered technologies like cassandra and kafka and supporting the libraries that connect to them
+	e.GET("/v1/endpoints/:namespace/:service", EndpointResolver)
 
 	e.Server.Addr = ":" + httpPort
 
