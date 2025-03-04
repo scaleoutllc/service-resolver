@@ -7,5 +7,7 @@ jobs:
     steps:
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.15.0
-        context:
-          
+        with:
+          push: true
+          tags: |
+            scaleoutllc/service-resolver:latest
