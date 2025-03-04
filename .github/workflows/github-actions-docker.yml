@@ -10,4 +10,4 @@ jobs:
         with:
           push: true
           tags: |
-            scaleoutllc/service-resolver:latest
+            ghcr.io/scaleoutllc/service-resolver:latest
