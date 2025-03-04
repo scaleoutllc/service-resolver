@@ -7,5 +7,6 @@ RUN make
 
 # No base image necessary, no base vulnerabilities to sweat
 FROM scratch
+LABEL org.opencontainers.image.source=https://github.com/scaleoutllc/service-resolver
 COPY --from=build /app/dist/service-resolver /service-resolver
 ENTRYPOINT ["/service-resolver"]
