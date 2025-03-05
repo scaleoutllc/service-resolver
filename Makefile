@@ -29,12 +29,12 @@ container:
 	docker build -t service-resolver:latest .
 
 cluster: clean
-	kind create cluster --config test-cluster/manifests/kind/cluster.yml
+	kind create cluster --config manifests/kind/cluster.yml
 	
 deploy:
-	kubectl apply -k test-cluster 
+	kubectl apply -k manifests/namespace/hello-world/test-cluster
 	kind load docker-image service-resolver:latest -n local
-	helm upgrade --install -n hello-world service-resolver helm --set imagePullPolicy=Never --wait
+	kubectl apply -k manifests/namespace/hello-world
 
 port-forward:
 	kubectl -n hello-world port-forward svc/service-resolver 8080

@@ -20,3 +20,38 @@ Returns the k8s service level IP address for a given `:service`
 ### `v1/endpoints/:namespace/:service`
 Returns the actual pod IP addresses for a given `:service` based on that service's selector configuration. This is useful
 for many clustered technologies like Cassandra and Kafka and supporting the libraries that connect to them directly via IP
+
+#### Local Dev
+Dependencies
+- make
+- curl
+- golang
+- kind
+- kubectl
+
+```
+# generate deployable artifact
+make container
+
+# turn on local cluster
+make cluster
+
+# ship test to local cluster
+make deploy
+
+# allow ingress
+make port-forward
+
+# test endpoints(open second-terminal)
+## returns ip address
+curl localhost:8080/v1/service/hello-world/home
+
+## returns comma separated list of ip addresses
+curl localhost:8080/v1/enpoints/hello-world/home
+
+# shutdown ingress(return to first-terminal)
+CTRL+C
+
+# shut down the local test environment
+make clean
+```
