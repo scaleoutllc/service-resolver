@@ -47,7 +47,7 @@ make port-forward
 curl localhost:8080/v1/service/hello-world/home
 
 ## returns comma separated list of ip addresses
-curl localhost:8080/v1/enpoints/hello-world/home
+curl localhost:8080/v1/endpoints/hello-world/home
 
 # shutdown ingress(return to first-terminal)
 CTRL+C
