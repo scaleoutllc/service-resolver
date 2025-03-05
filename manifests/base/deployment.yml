@@ -16,7 +16,7 @@ spec:
       serviceAccountName: service-resolver
       containers:
         - name: service-resolver
-          image: service-resolver:latest
+          image: ghcr.io/scaleoutllc/service-resolver:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

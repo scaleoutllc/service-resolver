@@ -20,3 +20,6 @@ patches:
     - op: replace
       path: /spec/template/spec/containers/0/imagePullPolicy
       value: Never
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: service-resolver:latest
