@@ -29,15 +29,14 @@ container:
 	docker build -t service-resolver:latest .
 
 cluster: clean
-	kind create cluster --config manifests/kind/cluster.yml
+	kind create cluster --config test-cluster/manifests/kind/cluster.yml
 	
 deploy:
-	kubectl apply -k manifests/namespace/hello-world/test-cluster
 	kind load docker-image service-resolver:latest -n local
-	kubectl apply -k manifests/namespace/hello-world
+	kubectl apply -k test-cluster
 
 port-forward:
-	kubectl -n hello-world port-forward svc/service-resolver 8080
+	kubectl -n service-resolver port-forward svc/service-resolver 8080
 
 clean: 
 	kind delete cluster -n local

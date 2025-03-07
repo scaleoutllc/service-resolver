@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: home
-  namespace: hello-world
+  namespace: service-resolver
 spec:
   selector:
     matchLabels:

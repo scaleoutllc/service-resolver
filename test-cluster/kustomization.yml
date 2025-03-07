@@ -1,18 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: hello-world
 resources:
-- ../../shared
-- ../../base
+- ../deploy
+- manifests/hello-world/configmap.yml
+- manifests/hello-world/deployment.yml
+- manifests/hello-world/service.yml
 
 patches:
-- target:
-    kind: ClusterRoleBinding
-    name: service-resolver
-  patch: |
-    - op: replace
-      path: /subjects/0/namespace
-      value: hello-world
 - target:
     kind: Deployment
     name: service-resolver
