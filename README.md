@@ -44,10 +44,10 @@ make port-forward
 
 # test endpoints(open second-terminal)
 ## returns ip address
-curl localhost:8080/v1/service/hello-world/home
+curl localhost:8080/v1/service/service-resolver/home
 
 ## returns comma separated list of ip addresses
-curl localhost:8080/v1/endpoints/hello-world/home
+curl localhost:8080/v1/endpoints/service-resolver/home
 
 # shutdown ingress(return to first-terminal)
 CTRL+C
