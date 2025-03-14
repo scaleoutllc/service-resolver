@@ -32,12 +32,11 @@ cluster: clean
 	kind create cluster --config test-cluster/manifests/kind/cluster.yml
 	
 deploy:
-	kubectl apply -k test-cluster 
 	kind load docker-image service-resolver:latest -n local
-	helm upgrade --install -n hello-world service-resolver helm --set imagePullPolicy=Never --wait
+	kubectl apply -k test-cluster
 
 port-forward:
-	kubectl -n hello-world port-forward svc/service-resolver 8080
+	kubectl -n service-resolver port-forward svc/service-resolver 8080
 
 clean: 
 	kind delete cluster -n local

@@ -5,7 +5,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: service-resolver
-    namespace: {{ .Release.Namespace }}
+    namespace: service-resolver
 roleRef:
   kind: ClusterRole
   name: service-resolver

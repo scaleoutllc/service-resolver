@@ -1,4 +1,0 @@
-apiVersion: v2
-name: service-resolver
-description: Return information about k8s services. Meant to be used during migrations and architecture transitions. Not a long term solution.
-version: 1.0.0

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: service-resolver
-  namespace: {{ .Release.Namespace }}
+  namespace: service-resolver
 spec:
   replicas: 1
   selector:
@@ -16,8 +16,8 @@ spec:
       serviceAccountName: service-resolver
       containers:
         - name: service-resolver
-          image: service-resolver:latest
-          imagePullPolicy: {{ .Values.imagePullPolicy | default "Always" }}
+          image: ghcr.io/scaleoutllc/service-resolver:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           livenessProbe:
