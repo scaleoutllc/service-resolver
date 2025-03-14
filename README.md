@@ -21,6 +21,19 @@ Returns the k8s service level IP address for a given `:service`
 Returns the actual pod IP addresses for a given `:service` based on that service's selector configuration. This is useful
 for many clustered technologies like Cassandra and Kafka and supporting the libraries that connect to them directly via IP
 
+## Deploying this Project
+The best way to route traffic to this project is left as an exercise to the consumer, likely modifying the service object to
+utilize a dynamic internal load balancer or alternatively pre-assigning a static clusterIP on the service object will be best.
+
+To deploy the default manifests which make no allowances for routing other than a basic service object use this command:
+
+```
+curl https://raw.githubusercontent.com/scaleoutllc/service-resolver/refs/heads/main/deploy/rendered-manifest.yml | kubectl apply -f 
+```
+
+You can also deploy this project from this repo by checking out the code and using `kubectl apply -k deploy/` after making 
+any desired modifications
+
 #### Local Dev
 Dependencies
 - make
@@ -44,10 +57,10 @@ make port-forward
 
 # test endpoints(open second-terminal)
 ## returns ip address
-curl localhost:8080/v1/service/service-resolver/home
+curl localhost:8080/v1/service/hello-world/home
 
 ## returns comma separated list of ip addresses
-curl localhost:8080/v1/endpoints/service-resolver/home
+curl localhost:8080/v1/endpoints/hello-world/home
 
 # shutdown ingress(return to first-terminal)
 CTRL+C

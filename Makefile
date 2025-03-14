@@ -41,4 +41,7 @@ port-forward:
 clean: 
 	kind delete cluster -n local
 
-.PHONY: all fmt lint vet test validate build run container cluster clean deploy
+manifest:
+	kubectl kustomize deploy/ > deploy/rendered-manifest.yml
+
+.PHONY: all fmt lint vet test validate build run container cluster clean deploy manifest
