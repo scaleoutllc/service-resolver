@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: home
-  namespace: service-resolver
+  namespace: hello-world
 spec:
   selector:
     app: home

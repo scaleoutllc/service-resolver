@@ -5,7 +5,7 @@ resources:
 - manifests/hello-world/configmap.yml
 - manifests/hello-world/deployment.yml
 - manifests/hello-world/service.yml
-
+- manifests/hello-world/namespace.yml
 patches:
 - target:
     kind: Deployment
