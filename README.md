@@ -28,7 +28,7 @@ utilize a dynamic internal load balancer or alternatively pre-assigning a static
 To deploy the default manifests which make no allowances for routing other than a basic service object use this command:
 
 ```
-curl https://raw.githubusercontent.com/scaleoutllc/service-resolver/refs/heads/main/deploy/rendered-manifest.yml | kubectl apply -f 
+curl https://raw.githubusercontent.com/scaleoutllc/service-resolver/refs/heads/main/deploy/rendered-manifest.yml | kubectl apply -f -
 ```
 
 You can also deploy this project from this repo by checking out the code and using `kubectl apply -k deploy/` after making 
